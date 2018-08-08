@@ -1,0 +1,13 @@
+---
+- hosts: 172.31.46.47
+  become: yes
+  become_method: sudo
+  gather_facts: false
+
+  tasks:
+    - name: Copying file
+      synchronize:
+        src: /home/ec2-user/file
+        dest: /root
+        mode: push
+      delegate_to: 172.31.42.46
